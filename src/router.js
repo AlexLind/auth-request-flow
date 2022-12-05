@@ -27,9 +27,9 @@ router.get('/profile', (req, res) => {
   const token = req.get('authorization');
     try {
         jwt.verify(token, process.env.JWT_SECRET)
-        return res.json(mockUser.profile) 
+        return res.json({profile: mockUser.profile}) 
     } catch (error) {
-        return res.json({error: 'wrong token or invalid secret phrase'})
+        return res.json({error: 'invalid login authorization'})
     }
 
 });
